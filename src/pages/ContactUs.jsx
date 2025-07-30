@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from '../components/common/Header'
 import ContactForm from '../components/ContactUs/FormSection'
 import ContactCard from '../components/ContactUs/ContactCard'
 import Footer from '../components/Common/Footer'
+import Header from '../components/common/Header'
 
 function ContactUs() {
     return (

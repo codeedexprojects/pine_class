@@ -24,7 +24,7 @@ const VantaGlobe = ({ children }) => {
       });
     };
 
-    // Load Three.js and Vanta Globe
+    
     const loadScripts = async () => {
       try {
         await loadScript('https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js');
@@ -49,9 +49,9 @@ const VantaGlobe = ({ children }) => {
         minWidth: 200.00,
         scale: 1.00,
         scaleMobile: 1.00,
-        color: 0x3b82f6,        // Primary blue
-        color2: 0x1d4ed8,       // Secondary darker blue
-        backgroundColor: 0xf8fafc,  // Light background
+        color: 0x3b82f6,       
+        color2: 0x1d4ed8,       
+        backgroundColor: 0xf8fafc,  
         size: 1.0
       });
     }
