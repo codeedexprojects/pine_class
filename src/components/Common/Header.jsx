@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
 
 export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const location = useLocation();
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const isActive = (path) => location.pathname === path;
+
   return (
-    <header className="bg-blue-900 text-white">
+    <header className="bg-blue-900 text-white fixed top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
@@ -20,21 +24,46 @@ export default function Header() {
 
           <nav className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
-              <a href="/" className="hover:text-green-400 transition-colors duration-200 px-3 py-2 text-sm font-medium">
+              <Link
+                to="/"
+                className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                  isActive('/') ? 'text-green-400' : 'hover:text-green-400'
+                }`}
+              >
                 Home
-              </a>
-              <a href="/courses" className="hover:text-green-400 transition-colors duration-200 px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link
+                to="/courses"
+                className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                  isActive('/courses') ? 'text-green-400' : 'hover:text-green-400'
+                }`}
+              >
                 Courses
-              </a>
-              <a href="/trainers" className="hover:text-green-400 transition-colors duration-200 px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link
+                to="/trainers"
+                className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                  isActive('/trainers') ? 'text-green-400' : 'hover:text-green-400'
+                }`}
+              >
                 Trainers
-              </a>
-              <a href="/about" className="hover:text-green-400 transition-colors duration-200 px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link
+                to="/about"
+                className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                  isActive('/about') ? 'text-green-400' : 'hover:text-green-400'
+                }`}
+              >
                 About
-              </a>
-              <a href="/contact" className="hover:text-green-400 transition-colors duration-200 px-3 py-2 text-sm font-medium">
+              </Link>
+              <Link
+                to="/contact"
+                className={`px-3 py-2 text-sm font-medium transition-colors duration-200 ${
+                  isActive('/contact') ? 'text-green-400' : 'hover:text-green-400'
+                }`}
+              >
                 Contact
-              </a>
+              </Link>
             </div>
           </nav>
 
@@ -61,21 +90,46 @@ export default function Header() {
         {isMobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 border-t border-blue-800">
-              <a href="#" className="hover:text-green-400 hover:bg-blue-800 block px-3 py-2 text-base font-medium transition-colors duration-200">
+              <Link
+                to="/"
+                className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
+                  isActive('/') ? 'text-green-400' : 'hover:text-green-400 hover:bg-blue-800'
+                }`}
+              >
                 Home
-              </a>
-              <a href="#" className="hover:text-green-400 hover:bg-blue-800 block px-3 py-2 text-base font-medium transition-colors duration-200">
+              </Link>
+              <Link
+                to="/courses"
+                className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
+                  isActive('/courses') ? 'text-green-400' : 'hover:text-green-400 hover:bg-blue-800'
+                }`}
+              >
                 Courses
-              </a>
-              <a href="#" className="hover:text-green-400 hover:bg-blue-800 block px-3 py-2 text-base font-medium transition-colors duration-200">
+              </Link>
+              <Link
+                to="/trainers"
+                className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
+                  isActive('/trainers') ? 'text-green-400' : 'hover:text-green-400 hover:bg-blue-800'
+                }`}
+              >
                 Trainers
-              </a>
-              <a href="#" className="hover:text-green-400 hover:bg-blue-800 block px-3 py-2 text-base font-medium transition-colors duration-200">
+              </Link>
+              <Link
+                to="/about"
+                className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
+                  isActive('/about') ? 'text-green-400' : 'hover:text-green-400 hover:bg-blue-800'
+                }`}
+              >
                 About
-              </a>
-              <a href="#" className="hover:text-green-400 hover:bg-blue-800 block px-3 py-2 text-base font-medium transition-colors duration-200">
+              </Link>
+              <Link
+                to="/contact"
+                className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
+                  isActive('/contact') ? 'text-green-400' : 'hover:text-green-400 hover:bg-blue-800'
+                }`}
+              >
                 Contact
-              </a>
+              </Link>
               <div className="pt-4 pb-2">
                 <button className="w-full bg-green-500 hover:bg-green-600 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors duration-200">
                   Enroll Now

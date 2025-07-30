@@ -1,6 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 export default function PopularCoursesSection() {
+  useEffect(() => {
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      mirror: false
+    });
+  }, []);
+
   const courses = [
     {
       id: 1,
@@ -53,7 +64,7 @@ export default function PopularCoursesSection() {
     <section className="py-16 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="mb-12">
+        <div className="mb-12" data-aos="fade-up">
           <h2 className="text-3xl md:text-4xl font-bold text-blue-900 mb-2">
             Popular Courses
           </h2>
@@ -62,13 +73,19 @@ export default function PopularCoursesSection() {
         {/* Scrollable Cards Container */}
         <div className="overflow-x-auto pb-6">
           <div className="flex gap-6 min-w-max">
-            {courses.map((course) => (
+            {courses.map((course, index) => (
               <div
                 key={course.id}
                 className="flex-shrink-0 w-80 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden group"
+                data-aos="fade-up"
+                data-aos-delay={index * 100}
               >
                 {/* Course Image */}
-                <div className={`h-48 bg-gradient-to-br ${course.bgColor} relative overflow-hidden`}>
+                <div 
+                  className={`h-48 bg-gradient-to-br ${course.bgColor} relative overflow-hidden`}
+                  data-aos="zoom-in"
+                  data-aos-delay={index * 100 + 200}
+                >
                   <img
                     src={course.image}
                     alt={course.title}
@@ -80,7 +97,11 @@ export default function PopularCoursesSection() {
                 {/* Course Content */}
                 <div className="p-6">
                   {/* Duration and Level */}
-                  <div className="flex items-center gap-4 mb-4 text-sm text-gray-600">
+                  <div 
+                    className="flex items-center gap-4 mb-4 text-sm text-gray-600"
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100 + 100}
+                  >
                     <span className="font-medium border border-gray-300 rounded-lg px-3 py-1">
                       {course.duration}
                     </span>
@@ -89,19 +110,30 @@ export default function PopularCoursesSection() {
                     </span>
                   </div>
 
-
                   {/* Course Title */}
-                  <h3 className="text-xl font-bold text-blue-900 mb-3 leading-tight">
+                  <h3 
+                    className="text-xl font-bold text-blue-900 mb-3 leading-tight"
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100 + 150}
+                  >
                     {course.title}
                   </h3>
 
                   {/* Course Description */}
-                  <p className="text-gray-600 text-sm leading-relaxed mb-6">
+                  <p 
+                    className="text-gray-600 text-sm leading-relaxed mb-6"
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100 + 200}
+                  >
                     {course.description}
                   </p>
 
                   {/* Learn More Button */}
-                  <button className="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-medium transition-colors duration-200">
+                  <button 
+                    className="w-full bg-green-600 hover:bg-green-700 text-white py-3 px-6 rounded-lg font-medium transition-colors duration-200"
+                    data-aos="fade-up"
+                    data-aos-delay={index * 100 + 250}
+                  >
                     Learn More
                   </button>
                 </div>
@@ -111,10 +143,13 @@ export default function PopularCoursesSection() {
         </div>
 
         {/* Scroll Indicator */}
-        <div className="flex justify-center mt-6">
+        <div 
+          className="flex justify-center mt-6"
+          data-aos="fade-up"
+          data-aos-delay="300"
+        >
           <div className="flex items-center gap-2">
             <div className="text-sm text-gray-500">Scroll to see more courses</div>
-
           </div>
         </div>
       </div>

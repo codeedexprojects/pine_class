@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import bg from '../../assets/course2.jpg';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 const Course2 = () => {
+
+     useEffect(() => {
+        AOS.init({
+          duration: 800,
+          once: true,
+        });
+      }, []);
     const topics = [
         {
             id: "01",
@@ -63,7 +72,7 @@ const Course2 = () => {
     return (
         <div className="max-w-7xl mx-auto p-6 bg-white rounded-lg shadow">
             {/* Header */}
-            <div className="bg-[#E6F0F8]  bg-cover bg-center rounded-t-lg p-6 flex flex-col gap-4" style={{ backgroundImage: `url(${bg})` }}>
+            <div className="bg-[#E6F0F8]  bg-cover bg-center rounded-t-lg p-6 flex flex-col gap-4" style={{ backgroundImage: `url(${bg})` }} data-aos="fade-down">
                 <div className="flex items-center gap-4">
                     <div className="bg-green-700 text-white px-4 py-2 rounded shadow text-xl font-bold"  >
                         02
@@ -90,11 +99,12 @@ const Course2 = () => {
 
 
             {/* Topics inside one box */}
-            <div className="border border-t-0 rounded-b-lg p-6">
+            <div className="border border-t-0 border-[#cbd1cc] rounded-b-lg p-6">
                 <div className="grid md:grid-cols-3 gap-0">
                     {topics.map((topic, index) => (
                         <div
                             key={topic.id}
+                            data-aos="fade-up"
                             className={`flex flex-col gap-2 p-6 border-gray-200 ${index < 3 ? 'border-b' : ''
                                 } ${index % 3 !== 2 ? 'md:border-r' : ''
                                 } ${index >= 3 ? 'md:border-b-0' : ''
